@@ -36,4 +36,10 @@ To delete the vm
 ```bash
   vagrant destroy
 ```
-
+To delete the vm 
+```bash
+  vagrant destroy
+```
+To check all available Boxes 
+```bash
+  vagrant box list -i
