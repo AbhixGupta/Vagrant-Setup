@@ -43,3 +43,7 @@ To delete the vm
 To check all available Boxes 
 ```bash
   vagrant box list -i
+  
+## Vagrant Networking
+How we can do port forwarding
+
