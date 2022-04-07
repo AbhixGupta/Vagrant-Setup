@@ -43,7 +43,13 @@ To delete the vm
 To check all available Boxes 
 ```bash
   vagrant box list -i
-  
+## Vagrant's CPU and Memory
+Vagrant's box comes up with default cpu, ram, storage size, but we can manipulate these settings by our needs. For this we have make an approprite changes in the vagrantfile.
+```bash
+
+```
+
+
 ## Vagrant Networking
 How we can do port forwarding
 
