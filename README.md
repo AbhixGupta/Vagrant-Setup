@@ -50,6 +50,7 @@ To delete the vm
 To check all available Boxes 
 ```bash
   vagrant box list -i
+  vagrant global-status
 ```
 Adding the bridge network in the virtual machine.
 ```bash
