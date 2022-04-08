@@ -1,0 +1,20 @@
+Vagrant.configure("2") do |config|
+    config.vm.provision "shell", inline: "echo Hello first machine"
+    config.vm.network "public_network"
+  
+    config.vm.define "u18" do |u18|
+      u18.vm.box = "ubuntu/bionic64"
+      config.vm.provider "virtualbox" do |vb|
+      vb.memory = "1048"
+      vb.cpus = 1
+     end
+    end
+  
+    config.vm.define "u16" do |u16|
+      u16.vm.box = "ubuntu/xenial64"
+      config.vm.provider "virtualbox" do |vb|
+      vb.memory = "1048"
+      vb.cpus = 1
+     end
+    end
+  end
