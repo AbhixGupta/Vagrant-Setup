@@ -50,13 +50,70 @@ To delete the vm
 To check all available Boxes 
 ```bash
   vagrant box list -i
-## Vagrant's CPU and Memory
-Vagrant's box comes up with default cpu, ram, storage size, but we can manipulate these settings by our needs. For this we have make an approprite changes in the vagrantfile.
+```
+Adding the bridge network in the virtual machine.
 ```bash
-
+  Vagrant.configure("2") do |config|
+    config.vm.box = "ubuntu/bionic64"
+    config.vm.network "public_network"
+  end
+```
+Add ssh to system to enable login from any location in computer. Login into vagrant machine
+```bash
+  useradd dev
+  passwd dev  //enter the password
+  vi /etc/ssh/sshd_config
+  PasswordAuthentication = yes (save and exit)
+  service ssh restart
+```
+Exit the vagrant machine and login through ssh using 
+```bash
+  ssh dev@privateIP
+```
+To run the customize the RAM and CPU, use and modify the below command accordingly.
+```bash
+  Vagrant.configure("2") do |config|
+    config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.cpus = 2
+  end
 ```
 
+Sync Directory between vagrant machine and host machine. By deafult its path is "/vagrant => D:/Vagrant/ubuntu", where /vagrant is directory in your vagrant machine and other side is your wiinodws direcory location.
+Sync directory maintains that data on both host and vagrant machine. To change this directory change the path in "vagrantfile".
 
-## Vagrant Networking
-How we can do port forwarding
+Modificaiton in file for installing git inside the vagrant machine (for Linux).
+```bash
+config.vm.provision "shell", inline: <<-SHELL
+     apt-get update
+     apt-get install -y git
+   SHELL
+```
+This is how you run multiple commands only by making modifications in vagrant file.
+
+Now lets see how we can make multiple virtual machine from single vagrantfile.
+
+```bash
+Vagrant.configure("2") do |config|
+  config.vm.provision "shell", inline: "echo Hello first machine"
+  config.vm.network "public_network"
+
+  config.vm.define "u18" do |u18|
+    u18.vm.box = "ubuntu/bionic64"
+    config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1048"
+    vb.cpus = 1
+  end
+  end
+
+  config.vm.define "u16" do |u16|
+    u16.vm.box = "ubuntu/xenial64"
+    config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1048"
+    vb.cpus = 1
+   end
+  end
+end
+
+```
 
