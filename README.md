@@ -5,6 +5,13 @@ Vagrant is an open source tool/software which is being to easily provision and c
 
 Vagrant currently supports the Windows, Mac, FreeBSD and Linux operating systems. This tool is built using the ruby language and have currently licence under MIT licence.
 
+### Poblem with virtual machines
+* To install the operating system in virtual machine we have download the iso image of other file in order spin up that machine.
+* To install run the virtual machine form the iso images very time consuming.
+* To install these machines all resorces and configuration setup have to done manually.
+* The real problem when we have to replicate or run the multiple virtual machine parallelly, your system becomes slow and machine resource consumption becomes high even for small tasks.
+
+
 ## Vagrant Features
 Vagrant offers list of rich features with fleblity and allows user to manage their virtual machines through command line interface and thorugh vagrantfile.
 
