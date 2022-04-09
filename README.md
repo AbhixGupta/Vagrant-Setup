@@ -117,4 +117,58 @@ Vagrant.configure("2") do |config|
 end
 
 ```
+### Changing the dis size of the Virtual Machine
+To change the disk size of the virtual machine we need to install one plugin
+```bash
+  vagrant plugin install vagrant-disksize
+```
+Now add the following in your Vagrantfile to increase the disk size by runnign following commands. The only limitation is that, it works only with the Virtualbox. Second the disk can only be incresed and vice-versa is not possible.
+```bash
+  Vagrant.configure('2') do |config|
+  config.vm.box = 'ubuntu/bionic64'
+  config.disksize.size = '25GB'
+end
+```
+### Communication between different Machines.
+To establish a communication between different running virtual machines we need to install Vagrant hostmanager Plugin. This helps the machine on the same network to communicate with their hostname.
+```bash
+  vagrant plugin install vagrant-hostmanager
+```
+Enable the hostmanger plugin into your Vagrantfile.
+```bash
+  Vagrant.configure('2') do |config|
+  config.hostmanager.enabled = true
+  config.vm.box = 'ubuntu/bionic64'
+  config.disksize.size = '25GB'
+end
+```
+For multiple machines.
+```bash
+Vagrant.configure("2") do |config|
+  config.vm.provision "shell", inline: "echo Hello first machine"
+  config.hostmanager.enabled = true
+  config.vm.network "public_network"
+
+  config.vm.define "u18" do |u18|
+    u18.vm.box = "ubuntu/bionic64"
+    u18.vm.hostname = "u18.example.com
+    u18.vm.network "private_network", ip: "172.16.48.12"
+    config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1048"
+    vb.cpus = 1
+  end
+  end
+
+  config.vm.define "u16" do |u16|
+    u16.vm.box = "ubuntu/xenial64"
+    u16.vm.hostname = "u16.example.com"
+    u18.vm.network "private_netwrok", ip: "172.16.48.13"
+    config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1048"
+    vb.cpus = 1
+   end
+  end
+end
+
+```
 
