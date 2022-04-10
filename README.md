@@ -130,7 +130,7 @@ Now add the following in your Vagrantfile to increase the disk size by runnign f
 end
 ```
 ### Communication between different Machines.
-To establish a communication between different running virtual machines we need to install Vagrant hostmanager Plugin. This helps the machine on the same network to communicate with their hostname.
+To establish a communication between different running virtual machines we need to install Vagrant hostmanager Plugin. This helps the machine on the same network to communicate with their hostname. Make sure to add correct IP addresses in the file.
 ```bash
   vagrant plugin install vagrant-hostmanager
 ```
