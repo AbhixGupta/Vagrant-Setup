@@ -3,7 +3,7 @@
 
 Vagrant is an open source tool/software which is being to easily provision and configure the virtual environment. It gets easily integrated with Virtualbox, Vmware and docker, the major difference between these virtulization software and vagrant is that, vagrant allows user to easily modiy or change the virtulization environment of Virtual Machine by using the simple, customizable API to mange that machine at any instance.
 
-Vagrant currently supports the Windows, Mac, FreeBSD and Linux operating systems. This tool is built using the ruby language and have currently licence under MIT licence.
+Vagrant currently supports the Windows, Mac, FreeBSD and Linux operating systems. This tool is built using the ruby language and have currently under MIT licence.
 
 ### Poblem with virtual machines
 * To install the operating system in virtual machine we have download the iso image of other file in order spin up that machine.
